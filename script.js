@@ -1,20 +1,18 @@
 'use strict';
 
-const title = 'Мой первый проект';
-const screens = 'Простые, Сложные, Интерактивные';
-const screenPrice = 15;
+const title = prompt('Как называется ваш проект?');
+const screens = prompt('Какие типы экранов нужно разработать?');
+const screenPrice = +prompt('Сколько будет стоить данная работа?');
 const rollback = 56;
-const fullPrice = 2000;
-const adaptive = true;
+let fullPrice = 0;
+const adaptive = confirm('Нужен ли адаптив на сайте?');
+const service1 = prompt('Какой дополнительный тип услуги нужен?');
+const servicePrice1 = prompt('Сколько это будет стоить?');
+const service2 = prompt('Какой дополнительный тип услуги нужен?');
+const servicePrice2 = prompt('Сколько это будет стоить?');
+fullPrice = (screenPrice + servicePrice1 + servicePrice2);
+const servicePercentPrice = (fullPrice - rollback);
 
-console.log(typeof title);
-console.log(typeof fullPrice);
-console.log(typeof adaptive);
+console.log(servicePercentPrice);
 
-console.log(screens.length);
 
-console.log(`"Стоимость верстки экранов ${screenPrice} долларов" и “Стоимость разработки сайта ${fullPrice})долларов`);
-
-console.log(screens.toLocaleLowerCase().split(', '));
-
-console.log((fullPrice * (rollback/100)));
