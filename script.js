@@ -49,7 +49,6 @@ const getRollbackMessage = function(price) {
 };
 
 
-
 fullPrice = getFullPrice(screenPrice, allServicePrices);
 servicePercentPrice = getServicePercentPrices(fullPrice,rollback);
 
@@ -58,11 +57,5 @@ showTypeOf(fullPrice);
 showTypeOf(adaptive);
 
 console.log(getRollbackMessage(fullPrice));
-console.log(servicePercentPrice);
-console.log(screens.length);
-
 console.log(`"Стоимость верстки экранов ${screenPrice} долларов" и “Стоимость разработки сайта ${fullPrice})долларов`);
 
-console.log(screens.toLocaleLowerCase().split(', '));
-
-console.log((fullPrice * (rollback/100)));
