@@ -9,8 +9,7 @@ const service1 = prompt('Какой дополнительный тип услу
 const servicePrice1 = +prompt('Сколько это будет стоить?');
 const service2 = prompt('Какой дополнительный тип услуги нужен?');
 const servicePrice2 = +prompt('Сколько это будет стоить?');
-let fullPrice = (screenPrice + servicePrice1 + servicePrice2);
-let servicePercentPrice = Math.ceil((fullPrice - (fullPrice * (rollback/100))));
+
 
 const showTypeOf = function(variable) {
     console.log(variable, typeof variable);
@@ -49,8 +48,8 @@ const getRollbackMessage = function(price) {
 };
 
 
-fullPrice = getFullPrice(screenPrice, allServicePrices);
-servicePercentPrice = getServicePercentPrices(fullPrice,rollback);
+let fullPrice = getFullPrice(screenPrice, allServicePrices);
+let servicePercentPrice = getServicePercentPrices(fullPrice,rollback);
 
 showTypeOf(title);
 showTypeOf(fullPrice);
