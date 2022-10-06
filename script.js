@@ -25,10 +25,8 @@ const getFullPrice = function(screenprice, allprices) {
 };
 
 function getTitle(title) {
-    title = title.trim();
-    title = title.toLowerCase();
-    title = title[0].toUpperCase() + title.slice(1);
-    return title;
+    title = title.trim().toLowerCase();
+    return title[0].toUpperCase() + title.slice(1);
 }
 
 function getServicePercentPrices(price, roll) {
