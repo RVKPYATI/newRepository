@@ -78,6 +78,7 @@ const getRollbackMessage = function(price) {
 };
 
 asking();
+
 let allServicePrices = getAllServicePrices();
 let fullPrice = getFullPrice(screenPrice, allServicePrices);
 let servicePercentPrice = getServicePercentPrices(fullPrice,rollback);
