@@ -40,7 +40,7 @@ function getAllServicePrices() {
             service2 = prompt('Какой дополнительный тип услуги нужен?');
         }
         let price = prompt('Cколько это будет стоить?');
-        while(!isNumber(price)) {
+        while(!isNumber(price) || price.indexOf(' ') > -1) {
             price = prompt('Cколько это будет стоить?');
         }
 
