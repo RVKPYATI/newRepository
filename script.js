@@ -10,7 +10,9 @@ let service2;
 
 
 const isNumber = function(num) {
-    return !isNaN(parseFloat(num)) && isFinite(num);
+
+    return !isNaN(parseFloat(num)) && isFinite(num) && String(num).indexOf(' ') === -1;
+
 };
 
 const asking = function() {
@@ -40,7 +42,7 @@ function getAllServicePrices() {
             service2 = prompt('Какой дополнительный тип услуги нужен?');
         }
         let price = prompt('Cколько это будет стоить?');
-        while(!isNumber(price) || price.indexOf(' ') > -1) {
+        while(!isNumber(price)) {
             price = prompt('Cколько это будет стоить?');
         }
 
