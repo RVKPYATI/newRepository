@@ -1,12 +1,16 @@
 'use strict';
 
-let title;
-let screens;
-let screenPrice;
-const rollback = 56;
-let adaptive;
-let service1;
-let service2;
+
+
+const appData = {
+    title,
+    screens,
+    screenPrice,
+    corollback: 56,
+    adaptive,
+    service1,
+    serv,
+};
 
 
 const isNumber = function(num) {
