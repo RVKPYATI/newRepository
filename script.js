@@ -27,9 +27,6 @@ const asking = function() {
     adaptive = confirm('Нужен ли адаптив на сайте?');
 };
 
-const showTypeOf = function(variable) {
-    console.log(variable, typeof variable);
-};
 
 function getAllServicePrices() {
     let sum = 0;
