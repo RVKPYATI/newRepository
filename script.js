@@ -80,10 +80,6 @@ let allServicePrices = getAllServicePrices();
 let fullPrice = getFullPrice(screenPrice, allServicePrices);
 let servicePercentPrice = getServicePercentPrices(fullPrice,rollback);
 
-showTypeOf(title);
-showTypeOf(fullPrice);
-showTypeOf(adaptive);
 
-console.log(getRollbackMessage(fullPrice));
-console.log(`"Стоимость верстки экранов ${screenPrice} долларов" и “Стоимость разработки сайта ${fullPrice})долларов`);
+
 
