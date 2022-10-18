@@ -64,16 +64,30 @@ const appData = {
     isNumber: function (num) {
         return !isNaN(parseFloat(num)) && isFinite(num) && String(num).indexOf(' ') === -1;
     },
+    logger: function() {
+        
+        for(let key in appData) {
+            console.log(key + " " + appData[key]);
+        }
+
+    },
+    start: function () {
+
+        appData.asking();
+
+        let allServicePrices = appData.getAllServicePrices();
+        let fullPrice = appData.getFullPrice(appData.screenPrice, allServicePrices);
+        let servicePercentPrice = appData.getServicePercentPrices(fullPrice, appData.rollback);
+
+        appData.logger();
+        
+    },
+    
 };
 
-
-appData.asking();
-
-let allServicePrices = appData.getAllServicePrices();
-let fullPrice = appData.getFullPrice(appData.screenPrice, allServicePrices);
-let servicePercentPrice = appData.getServicePercentPrices(fullPrice, appData.rollback);
+appData.start();
 
 
-console.log(fullPrice);
-console.log(servicePercentPrice);
+
+
 
