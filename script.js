@@ -3,44 +3,33 @@
 
 
 const appData = {
-    title,
-    screens,
-    screenPrice,
-    corollback: 56,
-    adaptive,
-    service1,
-    serv,
-};
+    title: '',
+    screens: '',
+    screenPrice: 0,
+    rollback: 56,
+    adaptive: true,
+    service1: '',
+    service2: '',
+    asking: function () {
+        appData.title = prompt('Как называется ваш проект?', 'Мой проект');
+        appData.screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные');
 
+        do {
+            appData.screenPrice = +prompt('Сколько будет стоить данная работа?');
+        }
+        while (!isNumber(appData.screenPrice));
 
-const isNumber = function(num) {
-
-    return !isNaN(parseFloat(num)) && isFinite(num) && String(num).indexOf(' ') === -1;
-
-};
-
-const asking = function() {
-    title = prompt('Как называется ваш проект?', 'Мой проект');
-    screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные');
-
-    do {
-        screenPrice = +prompt('Сколько будет стоить данная работа?');
-    }
-    while(!isNumber(screenPrice));
-
-    adaptive = confirm('Нужен ли адаптив на сайте?');
-};
-
-
-function getAllServicePrices() {
-    let sum = 0;
+        appData.adaptive = confirm('Нужен ли адаптив на сайте?');
+    },
+    getAllServicePrices: function() {
+        let sum = 0;
 
     for (let i = 0; i < 2; i++) {
         if (i === 0) {
-            service1 = prompt('Какой дополнительный тип услуги нужен?');
+            appData.service1 = prompt('Какой дополнительный тип услуги нужен?');
         
         } else if (i === 1) {
-            service2 = prompt('Какой дополнительный тип услуги нужен?');
+            appData.service2 = prompt('Какой дополнительный тип услуги нужен?');
         }
         let price = prompt('Cколько это будет стоить?');
         while(!isNumber(price)) {
@@ -50,15 +39,22 @@ function getAllServicePrices() {
         sum += +price;
     }
     return sum;
-}
+    }
+};
 
+
+const isNumber = function(num) {
+
+    return !isNaN(parseFloat(num)) && isFinite(num) && String(num).indexOf(' ') === -1;
+
+};
 
 const getFullPrice = function(screenprice, allprices) {
     return screenprice + allprices;
 };
 
 function getTitle(title) {
-    title = title.trim().toLowerCase();
+    title = appData.title.trim().toLowerCase();
     return title[0].toUpperCase() + title.slice(1);
 }
 
@@ -78,12 +74,13 @@ const getRollbackMessage = function(price) {
     }
 };
 
-asking();
+appData.asking();
 
 let allServicePrices = getAllServicePrices();
-let fullPrice = getFullPrice(screenPrice, allServicePrices);
-let servicePercentPrice = getServicePercentPrices(fullPrice,rollback);
+let fullPrice = getFullPrice(appData.screenPrice, allServicePrices);
+let servicePercentPrice = getServicePercentPrices(fullPrice,appData.rollback);
 
 
-
+console.log(fullPrice);
+console.log(servicePercentPrice);
 
