@@ -77,7 +77,9 @@ const appData = {
     start: function () {
 
         appData.asking();
-
+        appData.allServicePrices = appData.getAllServicePrices();
+        appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
+        appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
         appData.logger();
         
     },
