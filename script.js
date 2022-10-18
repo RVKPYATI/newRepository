@@ -10,6 +10,9 @@ const appData = {
     adaptive: true,
     service1: '',
     service2: '',
+    allServicePrices: 0,
+    fullPrice: 0,
+    servicePercentPrice: 0,
     asking: function () {
         appData.title = prompt('Как называется ваш проект?', 'Мой проект');
         appData.screens = prompt('Какие типы экранов нужно разработать?', 'Простые, Сложные');
@@ -74,10 +77,6 @@ const appData = {
     start: function () {
 
         appData.asking();
-
-        let allServicePrices = appData.getAllServicePrices();
-        let fullPrice = appData.getFullPrice(appData.screenPrice, allServicePrices);
-        let servicePercentPrice = appData.getServicePercentPrices(fullPrice, appData.rollback);
 
         appData.logger();
         
