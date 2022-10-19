@@ -41,17 +41,17 @@ const appData = {
 
             sum += +price;
         }
-        return sum;
+        appData.allServicePrices =  sum;
     },
     getFullPrice: function (screenprice, allprices) {
-        return screenprice + allprices;
+        appData.fullPrice = screenprice + allprices;
     },
     getTitle: function (title) {
         title = appData.title.trim().toLowerCase();
-        return title[0].toUpperCase() + title.slice(1);
+        appData.title = title[0].toUpperCase() + title.slice(1);
     },
     getServicePercentPrices: function (price, roll) {
-        return Math.ceil((price - (price * (roll / 100))));
+        appData.servicePercentPrice = Math.ceil((price - (price * (roll / 100))));
     },
     getRollbackMessage: function (price) {
         if (price >= 30000) {
@@ -77,9 +77,10 @@ const appData = {
     start: function () {
 
         appData.asking();
-        appData.allServicePrices = appData.getAllServicePrices();
-        appData.fullPrice = appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
-        appData.servicePercentPrice = appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
+        appData.getAllServicePrices();
+        appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
+        appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
+        appData.getTitle();
         appData.logger();
         
     },
