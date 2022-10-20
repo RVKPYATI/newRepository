@@ -12,19 +12,23 @@ const appData = {
     allServicePrices: 0,
     fullPrice: 0,
     servicePercentPrice: 0,
-    isText: function(variable,text) {
-        do {
-            variable = prompt(text);
-        }
-        while (appData.isNumber(variable));
-        return variable;
+    isText: function(num) {
+        return isNaN(num) && String(num).trim().length > 0;
     },
     asking: function () {
-        appData.title = appData.isText(appData.title, 'Как называется ваш проект?');
+        //appData.title = appData.isText(appData.title, 'Как называется ваш проект?');
+        do {
+            appData.title = prompt('Как называется ваш проект?');
+        }
+        while (!appData.isText(appData.title));
 
         for (let i = 0; i < 2; i++) {
             let name = '';
-            name = appData.isText(name, 'Какие типы экранов нужно разработать?');
+            do {
+                name = prompt('Какие типы экранов нужно разработать?');
+            }
+            while (!appData.isText(name));
+            //name = appData.isText(name, 'Какие типы экранов нужно разработать?');
             
             let price = 0;
 
@@ -38,7 +42,11 @@ const appData = {
 
         for (let i = 0; i < 2; i++) {
             let name ='';
-            name = appData.isText(name, 'Какие типы экранов нужно разработать?');
+            do {
+                name = prompt('Какие дополнительные работы нужны?');
+            }
+            while (!appData.isText(name));
+            //name = appData.isText(name, 'Какие дополнительные работы нужны?');
             let price = prompt('Cколько это будет стоить?');
 
             while (!appData.isNumber(price)) {
