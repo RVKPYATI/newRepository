@@ -16,7 +16,6 @@ const appData = {
         return isNaN(num) && String(num).trim().length > 0;
     },
     asking: function () {
-        //appData.title = appData.isText(appData.title, 'Как называется ваш проект?');
         do {
             appData.title = prompt('Как называется ваш проект?');
         }
@@ -28,7 +27,6 @@ const appData = {
                 name = prompt('Какие типы экранов нужно разработать?');
             }
             while (!appData.isText(name));
-            //name = appData.isText(name, 'Какие типы экранов нужно разработать?');
             
             let price = 0;
 
@@ -46,7 +44,6 @@ const appData = {
                 name = prompt('Какие дополнительные работы нужны?');
             }
             while (!appData.isText(name));
-            //name = appData.isText(name, 'Какие дополнительные работы нужны?');
             let price = prompt('Cколько это будет стоить?');
 
             while (!appData.isNumber(price)) {
