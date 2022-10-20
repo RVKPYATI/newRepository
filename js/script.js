@@ -3,16 +3,18 @@ const title = document.getElementsByTagName('h1')[0];
 const btnStart = document.getElementsByClassName('handler_btn')[0];
 const btnReset = document.getElementsByClassName('handler_btn')[1];
 const btnPlus = document.querySelector('.screen-btn');
-const otherItems1 = document.querySelectorAll('.other-items.percent');
-const otherItems2 = document.querySelectorAll('.other-items.number');
-const inputRange = document.querySelector('.rollback .main-controls__range input[type="range"]');
-const span = document.querySelector('.rollback .main-controls__range .range-value');
-const totalInput = document.getElementsByClassName('total-input');
-let screens = document.querySelectorAll('.screen');
+const othersAdaptiv = document.querySelectorAll('.other-items.percent');
+const otherServices = document.querySelectorAll('.other-items.number');
+const inputRange = document.querySelector('.main-controls__range input[type="range"]');
+const percentProgress = document.querySelector('.main-controls__range .range-value');
+const summHtmlCoding = document.getElementsByClassName('total-input')[0];
+const totalScreens = document.getElementsByClassName('total-input')[1];
+const addServSumm = document.getElementsByClassName('total-input')[2];
+const totalSumm = document.getElementsByClassName('total-input')[3];
+const summRollback = document.getElementsByClassName('total-input')[4];
+let screensBlocks = document.querySelectorAll('.screen');
 
-for(let i=0; i < totalInput.length; i++) {
-    console.log(totalInput[i]);
-}
+
 
 
 
