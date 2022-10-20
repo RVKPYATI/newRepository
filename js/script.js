@@ -8,7 +8,7 @@ const titleBook = book[4].querySelector('h2 > a');
 const listUTwoBook = book[0].querySelector('ul');
 const listTwoBook = book[0].querySelectorAll('li');
 const listFiveBook = book[5].querySelectorAll('li');
-const listSixBook = book[2].querySelectorAll('li')
+const listSixBook = book[2].querySelectorAll('li');
 const liSixBook = document.createElement('li');
 
 
