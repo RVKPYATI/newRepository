@@ -1,4 +1,5 @@
 'use strict';
+
 const title = document.getElementsByTagName('h1')[0];
 const btnStart = document.getElementsByClassName('handler_btn')[0];
 const btnReset = document.getElementsByClassName('handler_btn')[1];
