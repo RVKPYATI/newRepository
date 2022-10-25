@@ -36,6 +36,13 @@ const appData = {
         while (appData.isNumber(variable));
         return variable;
     },
+    init: function() {
+        appData.addTitle();
+        appData.start();
+    },
+    addTitle: function() {
+
+    },
     asking: function () {
         appData.title = appData.isText(appData.title, 'Как называется ваш проект?');
 
@@ -109,18 +116,18 @@ const appData = {
     },
     start: function () {
 
-        appData.asking();
-        appData.addPrices();
-        appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
-        appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
-        appData.getTitle();
-        appData.logger();
+        // appData.asking();
+        // appData.addPrices();
+        // appData.getFullPrice(appData.screenPrice, appData.allServicePrices);
+        // appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
+        // appData.getTitle();
+        // appData.logger();
         
     },
     
 };
 
-//appData.start();
+appData.init();
 
 
 
