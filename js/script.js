@@ -47,6 +47,7 @@ const appData = {
             } 
         });
         btnPlus.addEventListener('click', appData.addScreenBlock);
+        appData.getRollback();
     },
     addTitle: function () {
         document.title = title.textContent;
@@ -69,9 +70,10 @@ const appData = {
             appData.servicePricesPercent += appData.screenPrice * (appData.servicesPercent[key] / 100);
         }
         appData.fullPrice = +appData.screenPrice + appData.servicePricesPercent + appData.servicePricesNumber;
+        appData.servicePercentPrice = Math.ceil((appData.fullPrice - (appData.fullPrice * (appData.rollback/ 100))));
     },
     getServicePercentPrices: function (price, roll) {
-        appData.servicePercentPrice = Math.ceil((price - (price * (roll / 100))));
+        //appData.servicePercentPrice = Math.ceil((price - (price * (roll / 100))));
     },
     getRollbackMessage: function (price) {
         if (price >= 30000) {
@@ -148,10 +150,17 @@ const appData = {
             return true;
         }
     },
+    getRollback: function() {
+        inputRange.addEventListener('input', function() {
+            percentProgress.textContent = inputRange.value + '%';
+            appData.rollback = +inputRange.value;
+        });
+    },
     start: function () {
         appData.addScreens();
         appData.addServices();
         appData.addPrices();
+        
         // appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
         appData.logger();
         appData.showResult();
