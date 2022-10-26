@@ -21,6 +21,7 @@ let screensBlocks = document.querySelectorAll('.screen');
 const appData = {
     title: '',
     screens: [],
+    screensCounts: 0,
     screenPrice: 0,
     rollback: 56,
     adaptive: true,
@@ -60,6 +61,7 @@ const appData = {
     addPrices: function () {
         for (let screen of appData.screens) {
             appData.screenPrice += +screen.price;
+            appData.screensCounts += +screen.count;
         }
 
         for (let key in appData.servicesNumber) {
@@ -71,15 +73,14 @@ const appData = {
         }
         appData.fullPrice = +appData.screenPrice + appData.servicePricesPercent + appData.servicePricesNumber;
         appData.servicePercentPrice = Math.ceil((appData.fullPrice - (appData.fullPrice * (appData.rollback/ 100))));
-    },
-    getServicePercentPrices: function (price, roll) {
-        //appData.servicePercentPrice = Math.ceil((price - (price * (roll / 100))));
+        
     },
     showResult: function () {
         summHtmlCoding.value = appData.screenPrice;
         addServSumm.value = appData.servicePricesPercent + appData.servicePricesNumber;
         totalSumm.value = appData.fullPrice;
         summRollback.value = appData.servicePercentPrice;
+        totalScreens.value = appData.screensCounts;
     },
     addScreens: function () {
         screensBlocks = document.querySelectorAll('.screen');
@@ -91,7 +92,8 @@ const appData = {
             appData.screens.push({
                 id: index,
                 name: selectName,
-                price: +select.value * +input.value
+                price: +select.value * +input.value,
+                count: +input.value
             });
 
         });
@@ -124,7 +126,6 @@ const appData = {
         // for (let key in appData) {
         //     console.log(key + " " + appData[key]);
         // }
-        console.log(screensBlocks);
 
     },
     isValidate: function() {
