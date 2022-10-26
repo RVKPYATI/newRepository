@@ -75,17 +75,6 @@ const appData = {
     getServicePercentPrices: function (price, roll) {
         //appData.servicePercentPrice = Math.ceil((price - (price * (roll / 100))));
     },
-    getRollbackMessage: function (price) {
-        if (price >= 30000) {
-            return 'Даем скидку в 10%';
-        } else if (price >= 15000) {
-            return 'Даем скидку в 5%';
-        } else if (price >= 0) {
-            return 'Скидка не предусмотрена';
-        } else {
-            return 'Что то пошло не так';
-        }
-    },
     showResult: function () {
         summHtmlCoding.value = appData.screenPrice;
         addServSumm.value = appData.servicePricesPercent + appData.servicePricesNumber;
