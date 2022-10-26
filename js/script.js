@@ -90,6 +90,7 @@ const appData = {
         summHtmlCoding.value = appData.screenPrice;
         addServSumm.value = appData.servicePricesPercent + appData.servicePricesNumber;
         totalSumm.value = appData.fullPrice;
+        summRollback.value = appData.servicePercentPrice;
     },
     addScreens: function () {
         screensBlocks = document.querySelectorAll('.screen');
