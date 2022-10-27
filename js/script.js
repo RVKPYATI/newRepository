@@ -41,8 +41,8 @@ const appData = {
     },
     init: function () {
         appData.addTitle();
-        btnStart.addEventListener('click', function() {
-            if(appData.isValidate() === true) {
+        btnStart.addEventListener('click', function () {
+            if (appData.isValidate() === true) {
                 appData.start();
             } else {
                 alert('Вы ввели не все поля!');
@@ -57,7 +57,7 @@ const appData = {
     addScreenBlock: function () {
         // const cloneScreen = screensBlocks[0].cloneNode(true);
         const cloneScreen2 = cloneScreen.cloneNode(true);
-        screensBlocks[screensBlocks.length-1].after(cloneScreen2);
+        screensBlocks[screensBlocks.length - 1].after(cloneScreen2);
         screensBlocks = document.querySelectorAll('.screen');
     },
     addPrices: function () {
@@ -74,8 +74,8 @@ const appData = {
             appData.servicePricesPercent += appData.screenPrice * (appData.servicesPercent[key] / 100);
         }
         appData.fullPrice = +appData.screenPrice + appData.servicePricesPercent + appData.servicePricesNumber;
-        appData.servicePercentPrice = Math.ceil((appData.fullPrice - (appData.fullPrice * (appData.rollback/ 100))));
-        
+        appData.servicePercentPrice = Math.ceil((appData.fullPrice - (appData.fullPrice * (appData.rollback / 100))));
+
     },
     showResult: function () {
         summHtmlCoding.value = appData.screenPrice;
@@ -130,36 +130,37 @@ const appData = {
         // }
 
     },
-    isValidate: function() {
+    isValidate: function () {
         screensBlocks = document.querySelectorAll('.screen');
-        let count = 0;
+        let count = true;
         let select = '';
         let input = '';
-        screensBlocks.forEach(function(item) {
+        screensBlocks.forEach(function (item) {
             select = item.querySelector('select');
             input = item.querySelector('input');
-            if(select.value === '' || input.value === '') {
-                count++;
-            } 
-            
+            if (select.value === '' || input.value === '') {
+                count = false;
+            }
+
         });
-        if(count > 0) {
+        if (count === false) {
             return false;
-        } else if (count === 0){
+        } else if (count === true) {
             return true;
         }
     },
-    getRollback: function() {
-        inputRange.addEventListener('input', function() {
-            percentProgress.textContent = inputRange.value + '%';
-            appData.rollback = +inputRange.value;
-        });
+    countRollback: function () {
+        percentProgress.textContent = inputRange.value + '%';
+        appData.rollback = +inputRange.value;
+    },
+    getRollback: function () {
+        inputRange.addEventListener('input', appData.countRollback);
     },
     start: function () {
         appData.addScreens();
         appData.addServices();
         appData.addPrices();
-        
+
         // appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
         appData.logger();
         appData.showResult();
