@@ -14,7 +14,7 @@ const addServSumm = document.getElementsByClassName('total-input')[2];
 const totalSumm = document.getElementsByClassName('total-input')[3];
 const summRollback = document.getElementsByClassName('total-input')[4];
 let screensBlocks = document.querySelectorAll('.screen');
-
+const cloneScreen = screensBlocks[0].cloneNode(true);
 
 
 
@@ -23,7 +23,7 @@ const appData = {
     screens: [],
     screensCounts: 0,
     screenPrice: 0,
-    rollback: 56,
+    rollback: 0,
     adaptive: true,
     services: {},
     servicePricesPercent: 0,
@@ -41,11 +41,12 @@ const appData = {
     },
     init: function () {
         appData.addTitle();
-
         btnStart.addEventListener('click', function() {
             if(appData.isValidate() === true) {
                 appData.start();
-            } 
+            } else {
+                alert('Вы ввели не все поля!');
+            }
         });
         btnPlus.addEventListener('click', appData.addScreenBlock);
         appData.getRollback();
@@ -54,9 +55,10 @@ const appData = {
         document.title = title.textContent;
     },
     addScreenBlock: function () {
-        const cloneScreen = screensBlocks[0].cloneNode(true);
-
-        screensBlocks[screensBlocks.length - 1].after(cloneScreen);
+        // const cloneScreen = screensBlocks[0].cloneNode(true);
+        const cloneScreen2 = cloneScreen.cloneNode(true);
+        screensBlocks[screensBlocks.length-1].after(cloneScreen2);
+        screensBlocks = document.querySelectorAll('.screen');
     },
     addPrices: function () {
         for (let screen of appData.screens) {
@@ -129,15 +131,21 @@ const appData = {
 
     },
     isValidate: function() {
+        screensBlocks = document.querySelectorAll('.screen');
+        let count = 0;
         let select = '';
         let input = '';
         screensBlocks.forEach(function(item) {
             select = item.querySelector('select');
             input = item.querySelector('input');
+            if(select.value === '' || input.value === '') {
+                count++;
+            } 
+            
         });
-        if(select.value === '' || input.value === '') {
+        if(count > 0) {
             return false;
-        } else {
+        } else if (count === 0){
             return true;
         }
     },
