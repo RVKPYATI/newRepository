@@ -39,15 +39,16 @@ const appData = {
         while (appData.isNumber(variable));
         return variable;
     },
+    startValidate: function() {
+        if (appData.isValidate() === true) {
+            appData.start();
+        } else {
+            alert('Вы ввели не все поля!');
+        }
+    },
     init: function () {
         appData.addTitle();
-        btnStart.addEventListener('click', function () {
-            if (appData.isValidate() === true) {
-                appData.start();
-            } else {
-                alert('Вы ввели не все поля!');
-            }
-        });
+        btnStart.addEventListener('click', appData.startValidate);
         btnPlus.addEventListener('click', appData.addScreenBlock);
         appData.getRollback();
     },
