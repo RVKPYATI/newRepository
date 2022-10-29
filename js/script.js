@@ -39,7 +39,7 @@ const appData = {
         while (appData.isNumber(variable));
         return variable;
     },
-    startValidate: function() {
+    startValidate: function () {
         if (appData.isValidate() === true) {
             appData.start();
         } else {
@@ -86,7 +86,7 @@ const appData = {
     },
     addScreens: function () {
         screensBlocks = document.querySelectorAll('.screen');
-        screensBlocks.forEach(function (screen, index) {
+        screensBlocks.forEach((screen, index) => {
             const select = screen.querySelector('select');
             const input = screen.querySelector('input');
             const selectName = select.options[select.selectedIndex].textContent;
@@ -101,7 +101,7 @@ const appData = {
         });
     },
     addServices: function () {
-        otherPercents.forEach(function (item) {
+        otherPercents.forEach((item) => {
             const check = item.querySelector('input[type=checkbox]');
             const label = item.querySelector('label');
             const input = item.querySelector('input[type=text]');
@@ -112,7 +112,7 @@ const appData = {
 
         });
 
-        otherNumbers.forEach(function (item) {
+        otherNumbers.forEach((item) => {
             const check = item.querySelector('input[type=checkbox]');
             const label = item.querySelector('label');
             const input = item.querySelector('input[type=text]');
@@ -135,7 +135,7 @@ const appData = {
         let count = true;
         let select = '';
         let input = '';
-        screensBlocks.forEach(function (item) {
+        screensBlocks.forEach((item) => {
             select = item.querySelector('select');
             input = item.querySelector('input');
             if (select.value === '' || input.value === '') {
@@ -170,8 +170,3 @@ const appData = {
 };
 
 appData.init();
-
-
-
-
-
