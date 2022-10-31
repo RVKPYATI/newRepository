@@ -36,7 +36,7 @@ const appData = {
         do {
             variable = prompt(text);
         }
-        while (appData.isNumber(variable));
+        while (this.isNumber(variable));
         return variable;
     },
     startValidate: function () {
@@ -130,6 +130,46 @@ const appData = {
         // }
 
     },
+    isDisabled: function () {
+        screensBlocks.forEach((item) => {
+            const select = item.querySelector('select');
+            const input = item.querySelector('input');
+            select.disabled = true;
+            input.disabled = true;
+        });
+        otherPercents.forEach((item)=>{
+            const checkbox = item.querySelector('input[type=checkbox]');
+            checkbox.disabled = true;
+        });
+        otherNumbers.forEach((item)=>{
+            const checkbox = item.querySelector('input[type=checkbox]');
+            checkbox.disabled = true;
+        });
+        inputRange.disabled = true;
+        btnStart.style.display = 'none';
+        btnReset.style.display = 'block';
+        btnReset.addEventListener('click', reset);
+    },
+    resetScreensBlocks: function() {
+        screensBlocks.forEach((item) => {
+            item.remove();
+        });
+        const cloneScreen2 = cloneScreen.cloneNode(true);
+        btnPlus.before(cloneScreen2);
+    },
+    resetShowResult: function() {
+        summHtmlCoding.value = 0;
+        addServSumm.value = 0;
+        totalSumm.value = 0;
+        summRollback.value = 0;
+        totalScreens.value = 0;
+    },
+    reset: function() {
+        this.resetScreensBlocks();
+        this.resetShowResult();
+        btnStart.style.display = 'block';
+        btnReset.style.display = 'none';
+    },
     isValidate: function () {
         screensBlocks = document.querySelectorAll('.screen');
         let count = true;
@@ -164,6 +204,7 @@ const appData = {
         // appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
         this.logger();
         this.showResult();
+        this.isDisabled();
 
     },
 
@@ -171,5 +212,6 @@ const appData = {
 const startval = appData.startValidate.bind(appData);
 const addScreen = appData.addScreenBlock.bind(appData);
 const coutntRoll = appData.countRollback.bind(appData);
+const reset = appData.reset.bind(appData);
 
 appData.init();
