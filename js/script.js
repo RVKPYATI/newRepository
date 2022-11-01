@@ -130,6 +130,17 @@ const appData = {
         // }
 
     },
+    isEnabled: function () {
+        otherPercents.forEach((item)=>{
+            const checkbox = item.querySelector('input[type=checkbox]');
+            checkbox.disabled = false;
+        });
+        otherNumbers.forEach((item)=>{
+            const checkbox = item.querySelector('input[type=checkbox]');
+            checkbox.disabled = false;
+        });
+        inputRange.disabled = false;
+    },
     isDisabled: function () {
         screensBlocks.forEach((item) => {
             const select = item.querySelector('select');
@@ -157,6 +168,30 @@ const appData = {
         const cloneScreen2 = cloneScreen.cloneNode(true);
         btnPlus.before(cloneScreen2);
     },
+    resetOthersBlocks: function () {
+        otherPercents.forEach((item)=>{
+            const checkbox = item.querySelector('input[type=checkbox]');
+            checkbox.checked = false;
+        });
+        otherNumbers.forEach((item)=>{
+            const checkbox = item.querySelector('input[type=checkbox]');
+            checkbox.checked = false;
+        });
+        inputRange.value = 0;
+    },
+    resetDataObj: function () {
+        this.screens = [];
+        this.screensCounts = 0;
+        this.screenPrice = 0;
+        this.rollback =  0;
+        this.services = {};
+        this.servicePricesPercent = 0;
+        this.servicePricesNumber = 0;
+        this.fullPrice = 0;
+        this.servicePercentPrice = 0;
+        this.servicesPercent = {};
+        this.servicesNumber = {};
+    },
     resetShowResult: function() {
         summHtmlCoding.value = 0;
         addServSumm.value = 0;
@@ -166,6 +201,10 @@ const appData = {
     },
     reset: function() {
         this.resetScreensBlocks();
+        this.resetOthersBlocks();
+        this.isEnabled();
+        this.resetDataObj();
+        this.countRollback();
         this.resetShowResult();
         btnStart.style.display = 'block';
         btnReset.style.display = 'none';
