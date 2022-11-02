@@ -48,14 +48,15 @@ const appData = {
     },
     init: function () {
         this.addTitle();
-        btnStart.addEventListener('click', ()=> {this.startValidate.call(this);});
-        btnPlus.addEventListener('click', ()=> {this.addScreenBlock.call(this);});
+        btnStart.addEventListener('click', ()=> this.startValidate());
+        btnPlus.addEventListener('click', ()=> this.addScreenBlock());
         this.getRollback();
     },
     addTitle: function () {
         document.title = title.textContent;
     },
     addScreenBlock: function () {
+        console.log(this)
         const cloneScreen2 = cloneScreen.cloneNode(true);
         screensBlocks[screensBlocks.length - 1].after(cloneScreen2);
         screensBlocks = document.querySelectorAll('.screen');
@@ -156,7 +157,7 @@ const appData = {
         inputRange.disabled = true;
         btnStart.style.display = 'none';
         btnReset.style.display = 'block';
-        btnReset.addEventListener('click', ()=> {this.reset.call(this);});
+        btnReset.addEventListener('click', ()=> this.reset());
         btnPlus.disabled = true;
     },
     resetScreensBlocks: function() {
@@ -231,7 +232,7 @@ const appData = {
         this.rollback = +inputRange.value;
     },
     getRollback: function () {
-        inputRange.addEventListener('input', ()=> {this.countRollback.call(this);});
+        inputRange.addEventListener('input', ()=> this.countRollback());
     },
     start: function () {
         this.addScreens();
