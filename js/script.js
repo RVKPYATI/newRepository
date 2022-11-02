@@ -48,8 +48,8 @@ const appData = {
     },
     init: function () {
         this.addTitle();
-        btnStart.addEventListener('click', startval);
-        btnPlus.addEventListener('click', addScreen);
+        btnStart.addEventListener('click', ()=> {this.startValidate.call(this);});
+        btnPlus.addEventListener('click', ()=> {this.addScreenBlock.call(this);});
         this.getRollback();
     },
     addTitle: function () {
@@ -125,10 +125,6 @@ const appData = {
     },
     logger: function () {
 
-        // for (let key in appData) {
-        //     console.log(key + " " + appData[key]);
-        // }
-
     },
     isEnabled: function () {
         otherPercents.forEach((item)=>{
@@ -140,6 +136,7 @@ const appData = {
             checkbox.disabled = false;
         });
         inputRange.disabled = false;
+        btnPlus.disabled = false;
     },
     isDisabled: function () {
         screensBlocks.forEach((item) => {
@@ -159,7 +156,8 @@ const appData = {
         inputRange.disabled = true;
         btnStart.style.display = 'none';
         btnReset.style.display = 'block';
-        btnReset.addEventListener('click', reset);
+        btnReset.addEventListener('click', ()=> {this.reset.call(this);});
+        btnPlus.disabled = true;
     },
     resetScreensBlocks: function() {
         screensBlocks.forEach((item) => {
@@ -233,14 +231,12 @@ const appData = {
         this.rollback = +inputRange.value;
     },
     getRollback: function () {
-        inputRange.addEventListener('input', coutntRoll);
+        inputRange.addEventListener('input', ()=> {this.countRollback.call(this);});
     },
     start: function () {
         this.addScreens();
         this.addServices();
         this.addPrices();
-
-        // appData.getServicePercentPrices(appData.fullPrice, appData.rollback);
         this.logger();
         this.showResult();
         this.isDisabled();
@@ -248,9 +244,5 @@ const appData = {
     },
 
 };
-const startval = appData.startValidate.bind(appData);
-const addScreen = appData.addScreenBlock.bind(appData);
-const coutntRoll = appData.countRollback.bind(appData);
-const reset = appData.reset.bind(appData);
 
 appData.init();
